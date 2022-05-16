@@ -10,7 +10,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "prisma:studio": "turbo run studio"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
