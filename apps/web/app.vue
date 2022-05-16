@@ -2,4 +2,4 @@
   <div>
     <NuxtWelcome />
   </div>
-</template>
+</template>;
