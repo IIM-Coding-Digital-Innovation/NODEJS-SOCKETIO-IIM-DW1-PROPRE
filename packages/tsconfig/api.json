@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "API Typescript Configuration",
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "lib": ["esnext"],
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "moduleResolution": "Node"
+  }
+}

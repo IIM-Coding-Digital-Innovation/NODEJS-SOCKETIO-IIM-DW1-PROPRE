@@ -1,0 +1,12 @@
+services:
+  db:
+    image: postgres:13-alpine
+    environment:
+      - PGDATABASE=${DB_NAME}
+      - POSTGRES_DB=${DB_NAME}
+      - PGUSER=${DB_USER}
+      - POSTGRES_USER=${DB_USER}
+      - PGPASSWORD=${DB_PASSWORD}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "5432:5432"
