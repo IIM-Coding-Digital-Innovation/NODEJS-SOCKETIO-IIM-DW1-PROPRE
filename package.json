@@ -12,7 +12,8 @@
     "dev": "npm run update-env && turbo run dev --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "studio": "turbo run studio"
+    "studio": "turbo run studio",
+    "migrate": "turbo run migrate"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",

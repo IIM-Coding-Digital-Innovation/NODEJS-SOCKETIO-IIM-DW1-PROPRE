@@ -17,6 +17,9 @@
     },
     "studio": {
       "outputs": []
+    },
+    "migrate": {
+      "outputs": ["prisma/migrations/**"]
     }
   }
 }

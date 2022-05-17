@@ -8,6 +8,7 @@
     "dev": "nodemon --watch './**/*.ts' --exec 'node --loader ts-node/esm' ./index.ts",
     "lint": "eslint . --cache --fix --ext .js,.ts",
     "studio": "npx prisma studio",
+    "migrate": "npx prisma migrate dev",
     "test": "jest"
   },
   "devDependencies": {
