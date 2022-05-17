@@ -1,0 +1,10 @@
+version: 2.1
+name: Tests and lint CI
+
+on: [push]
+jobs:
+  run-lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - run:
+          
