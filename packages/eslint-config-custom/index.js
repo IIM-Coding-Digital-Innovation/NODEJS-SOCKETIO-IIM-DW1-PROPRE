@@ -21,6 +21,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/extensions': ['error', 'never'],
+    'import/prefer-default-export': 'off',
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
     '@typescript-eslint/no-explicit-any': 'error',
@@ -35,6 +36,7 @@ module.exports = {
     'no-empty-function': 'off',
     'no-void': 'off',
     'no-restricted-syntax': 'off',
+    'newline-per-chained-call': 'off',
   },
   settings: {
     'import/parsers': {
