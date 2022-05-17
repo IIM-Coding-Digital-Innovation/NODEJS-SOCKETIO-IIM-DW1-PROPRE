@@ -8,6 +8,9 @@
     "lint": {
       "outputs": []
     },
+    "test": {
+      "outputs": []
+    },
     "dev": {
       "dependsOn": ["studio"],
       "cache": false
