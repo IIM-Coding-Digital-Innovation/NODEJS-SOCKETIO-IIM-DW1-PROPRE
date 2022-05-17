@@ -7,16 +7,17 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "update-env": "ts-node ./scripts/update-env.ts",
+    "build": "npm run update-env && turbo run build",
+    "dev": "npm run update-env && turbo run dev --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "prisma:studio": "turbo run studio"
+    "studio": "turbo run studio"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.15.0",
-    "nodemon": "^2.0.16",
+    "ts-node": "^10.7.0",
     "turbo": "latest"
   },
   "engines": {

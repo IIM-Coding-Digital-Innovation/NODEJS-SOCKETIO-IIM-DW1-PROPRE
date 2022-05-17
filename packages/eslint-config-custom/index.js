@@ -34,6 +34,7 @@ module.exports = {
     'no-plusplus': 'off',
     'no-empty-function': 'off',
     'no-void': 'off',
+    'no-restricted-syntax': 'off',
   },
   settings: {
     'import/parsers': {
