@@ -8,4 +8,21 @@ export default defineNuxtConfig({
       eslintPlugin(),
     ],
   },
+  build: {
+    postcss: {
+      postcssOptions: {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {},
+        },
+      },
+    },
+  },
+  css: [
+    '~/assets/css/tailwind.css',
+    '~/assets/css/global.css',
+  ],
+  typescript: {
+    shim: false,
+  },
 });
