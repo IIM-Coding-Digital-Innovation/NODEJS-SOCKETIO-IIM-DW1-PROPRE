@@ -15,4 +15,37 @@ model User {
   email    String   @unique
   name     String?
   password String
+  projects UserProject[]
+}
+
+model Project {
+  id      Int      @id @default(autoincrement())
+  name    String
+  columns Column[]
+  users   UserProject[]
+}
+
+model UserProject {
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
+  project    Project @relation(fields: [projectId], references: [id])
+  projectId  Int
+
+  @@id([userId, projectId])
+}
+
+model Column {
+  id        Int     @id @default(autoincrement())
+  name      String
+  project   Project @relation(fields: [projectId], references: [id])
+  projectId Int
+  tasks     Task[]
+}
+
+model Task {
+  id       Int    @id @default(autoincrement())
+  name     String
+  content  Json
+  column   Column @relation(fields: [columnId], references: [id])
+  columnId Int
 }

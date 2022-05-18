@@ -4,10 +4,12 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    'plugin:import/recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 13,
+    ecmaVersion: 'latest',
+    parser: '@typescript-eslint/parser',
     sourceType: 'module',
   },
   plugins: [
@@ -15,24 +17,31 @@ module.exports = {
   ],
   rules: {
     indent: 'off',
-    '@typescript-eslint/indent': ['error', 2],
+    'import/no-default-export': 'off',
+    'import/no-unresolved': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'import/extensions': ['error', 'never'],
     'import/prefer-default-export': 'off',
-    'import/no-default-export': 'error',
+    '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
     '@typescript-eslint/no-explicit-any': 'error',
-    'import/extensions': ['error', 'never'],
-    'lines-between-class-members': 'off',
     '@typescript-eslint/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
+    '@typescript-eslint/no-unused-vars': ['error'],
+    'lines-between-class-members': 'off',
     'no-underscore-dangle': 'off',
     'class-methods-use-this': 'off',
     'no-use-before-define': 'off',
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['error'],
     'no-plusplus': 'off',
     'no-empty-function': 'off',
     'no-void': 'off',
+    'no-restricted-syntax': 'off',
+    'newline-per-chained-call': 'off',
   },
   settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts'],
+    },
     'import/resolver': {
       node: {
         extensions: ['.js', '.ts'],

@@ -13,7 +13,7 @@ This repository is a monorepo powered by [Turborepo](https://turborepo.org/). It
 
 ### Packages
 
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `eslint-config-custom`: `eslint` configurations
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 ### Utilities
@@ -33,7 +33,6 @@ This repository is a monorepo powered by [Turborepo](https://turborepo.org/). It
 | [Docker](https://www.docker.com/get-started/) | 20.10+      |
 
 ### Installation
-
 To get the project started, clone this repository:
 ```sh
 # With SSH
@@ -48,8 +47,19 @@ Then install packages:
 npm install
 ```
 
-### Development
+If you want to use it there is a development database ready with Docker compose:
+```sh
+docker-compose up -d
+```
 
+Then you need to run the prisma `generate` command:
+```sh
+# Navigate to the api app directory
+cd apps/api
+npx prisma generate
+```
+
+### Development
 To run the project for development use:
 ```sh
 npm run dev
@@ -57,10 +67,15 @@ npm run dev
 It will automatically run the Nuxt and Adonis apps on your `localhost`.
 
 ### Build
-
 To build the project use:
 ```sh
 npm run build
+```
+
+## Linting
+All apps in the repository can be linted with:
+```
+npm run lint
 ```
 
 ## Tests
