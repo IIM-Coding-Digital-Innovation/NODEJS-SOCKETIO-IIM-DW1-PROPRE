@@ -12,11 +12,17 @@ const userRoutes = (app: App, prisma: PrismaClient) => {
   app.post(
     '/users',
     body('email').isEmail().normalizeEmail(),
-    body('name').trim().escape(),
+    body('name').notEmpty().trim().escape(),
     body('password').isLength({ min: 6 }),
     handler.createUser,
   );
-  app.patch('/users/:id', handler.updateUser);
+  app.patch(
+    '/users/:id',
+    body('email').isEmail().normalizeEmail(),
+    body('name').trim().escape(),
+    body('password').isLength({ min: 6 }),
+    handler.updateUser,
+  );
   app.delete('/users/:id', handler.deleteUser);
 };
 
