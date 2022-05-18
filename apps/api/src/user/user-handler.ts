@@ -5,13 +5,20 @@ import { hash } from 'argon2';
 
 const getHandler = (prisma: PrismaClient) => {
   const getUsers = async (req: Request, res: Response) => {
-    res.json(await prisma.user.findMany());
+    res.json(await prisma.user.findMany({
+      include: {
+        projects: true,
+      },
+    }));
   };
 
   const getUser = async (req: Request, res: Response) => {
     res.json(await prisma.user.findUnique({
       where: {
         id: +req.params.id,
+      },
+      include: {
+        projects: true,
       },
     }));
   };
