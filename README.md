@@ -47,6 +47,18 @@ Then install packages:
 npm install
 ```
 
+If you want to use it there is a development database ready with Docker compose:
+```sh
+docker-compose up -d
+```
+
+Then you need to run the prisma `generate` command:
+```sh
+# Navigate to the api app directory
+cd apps/api
+npx prisma generate
+```
+
 ### Development
 To run the project for development use:
 ```sh
