@@ -12,11 +12,14 @@
       "outputs": []
     },
     "dev": {
-      "dependsOn": ["studio"],
       "cache": false
     },
     "studio": {
-      "outputs": []
+      "outputs": [],
+      "cache": false
+    },
+    "migrate": {
+      "outputs": ["prisma/migrations/**"]
     }
   }
 }

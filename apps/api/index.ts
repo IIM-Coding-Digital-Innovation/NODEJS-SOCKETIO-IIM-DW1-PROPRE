@@ -1,17 +1,10 @@
-import { App } from '@tinyhttp/app';
-import { logger } from '@tinyhttp/logger';
+import Prisma from '@prisma/client';
+import { createApi } from './src/create-api';
 
-const app = new App();
+const prisma = new Prisma.PrismaClient();
+const port = +(process.env.PORT ?? '3001');
 
-app
-  .use(logger())
-  .get('/', (_, res) => res.send('<h1>Hello World</h1>'))
-  .get('/page/:page/', (req, res) => {
-    res.status(200).send(`
-    <h1>Some cool page</h1>
-    <h2>URL</h2>
-    ${req.url}
-    <h2>Params</h2>
-    ${JSON.stringify(req.params, null, 2)}
-  `);
-  }).listen(3001);
+createApi(prisma).listen(port, () => {
+  // eslint-disable-next-line no-console
+  console.log('listening on port', port);
+});

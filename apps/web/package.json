@@ -1,4 +1,5 @@
 {
+  "name": "web",
   "private": true,
   "scripts": {
     "build": "nuxt build",
