@@ -4,7 +4,7 @@ const route = useRoute();
 
 const { data: projects } = await useAsyncData(
   'projects',
-  () => $fetch(`http://localhost:3001/projects/${route.params.id}`),
+  () => $fetch(`/api/projects/${route.params.id}`),
 );
 
 const { columns } = projects.value;

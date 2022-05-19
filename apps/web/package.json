@@ -21,6 +21,7 @@
     "vite-plugin-eslint": "^1.6.0"
   },
   "dependencies": {
+    "@nuxtjs-alt/proxy": "^1.2.2",
     "daisyui": "^2.15.0",
     "vuedraggable": "^4.1.0"
   }
