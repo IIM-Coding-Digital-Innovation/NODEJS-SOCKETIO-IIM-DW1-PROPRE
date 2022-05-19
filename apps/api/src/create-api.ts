@@ -7,6 +7,8 @@ import { logger } from '@tinyhttp/logger';
 import { userRoutes } from './user/user-routes';
 import { projectRoutes } from './project/project-routes';
 import { authRoutes } from './auth/auth-routes';
+import { taskRoutes } from './task/task-routes';
+
 
 const createApi = (prisma: PrismaClient) => {
   const app = new App();
@@ -20,6 +22,7 @@ const createApi = (prisma: PrismaClient) => {
   authRoutes(app, prisma);
   userRoutes(app, prisma);
   projectRoutes(app, prisma);
+  taskRoutes(app, prisma);
 
   return app;
 };
