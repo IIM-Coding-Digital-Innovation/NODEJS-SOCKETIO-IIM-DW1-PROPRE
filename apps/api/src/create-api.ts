@@ -10,6 +10,7 @@ import { userRoutes } from './user/user-routes';
 import { projectRoutes } from './project/project-routes';
 import { authRoutes } from './auth/auth-routes';
 import { taskRoutes } from './task/task-routes';
+import { columnRoutes } from './column/column-routes';
 
 const createApi = (prisma: PrismaClient) => {
   const app = new App();
@@ -27,6 +28,7 @@ const createApi = (prisma: PrismaClient) => {
   userRoutes(app, io, prisma);
   projectRoutes(app, io, prisma);
   taskRoutes(app, io, prisma);
+  columnRoutes(app, io, prisma);
 
   return server;
 };
