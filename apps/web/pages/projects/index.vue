@@ -1,8 +1,6 @@
 <script setup>
 
-const { data } = await useAsyncData('projects', () => $fetch('http://localhost:3001/projects'));
-
-console.log(data.value);
+const { data: projects } = await useAsyncData('projects', () => $fetch('http://localhost:3001/projects'));
 
 // const projects = ref([
 //   { id: 1, name: 'First title', users: [{ name: 'Colin' }, { name: 'Florent' }] },

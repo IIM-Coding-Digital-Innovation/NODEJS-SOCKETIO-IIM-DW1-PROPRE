@@ -31,6 +31,19 @@ const getHandler = (prisma: PrismaClient) => {
       const newProject = await prisma.project.create({
         data: {
           name: req.body.name,
+          columns: {
+            create: [
+              {
+                name: 'To do',
+              },
+              {
+                name: 'In progress',
+              },
+              {
+                name: 'Done',
+              },
+            ],
+          },
         },
       });
       res.json(newProject);

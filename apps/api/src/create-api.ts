@@ -9,7 +9,6 @@ import { projectRoutes } from './project/project-routes';
 import { authRoutes } from './auth/auth-routes';
 import { taskRoutes } from './task/task-routes';
 
-
 const createApi = (prisma: PrismaClient) => {
   const app = new App();
 

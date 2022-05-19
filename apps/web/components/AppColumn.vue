@@ -2,8 +2,8 @@
 import Draggable from 'vuedraggable';
 
 const props = defineProps({
-  title: {
-    type: String,
+  data: {
+    type: Object,
     required: true,
   },
 });
@@ -19,7 +19,7 @@ const tasks = ref([
   <div class="flex">
     <div class="card bg-secondary-content mx-5 min-h-screen w-72">
       <h2 class="m-2">
-        {{ props.title }}
+        {{ props.data.name }}
       </h2>
       <Draggable
         v-model="tasks"
@@ -28,7 +28,7 @@ const tasks = ref([
         group="tasks"
       >
         <template #item="{element}">
-          <AppTask :title="element.title" />
+          <AppTask :data="element" />
         </template>
       </Draggable>
     </div>
