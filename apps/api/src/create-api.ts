@@ -4,6 +4,7 @@ import { json } from 'milliparsec';
 import type { PrismaClient } from '@prisma/client';
 import { userRoutes } from './user/user-routes';
 import { projectRoutes } from './project/project-routes';
+import { taskRoutes } from './task/task-routes';
 
 const createApi = (prisma: PrismaClient) => {
   const app = new App();
@@ -14,6 +15,7 @@ const createApi = (prisma: PrismaClient) => {
 
   userRoutes(app, prisma);
   projectRoutes(app, prisma);
+  taskRoutes(app, prisma);
   // authRoutes(app, ajv, prisma)
   // profileRoutes(app, ajv, prisma)
   // articleRoutes(app, ajv, prisma)
