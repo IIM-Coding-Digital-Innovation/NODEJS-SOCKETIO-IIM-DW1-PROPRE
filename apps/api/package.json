@@ -10,7 +10,8 @@
     "lint": "eslint . --cache --fix --ext .js,.ts",
     "studio": "npx prisma studio",
     "migrate": "npx prisma migrate dev",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "npm run lint && npm run test && npm start"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",

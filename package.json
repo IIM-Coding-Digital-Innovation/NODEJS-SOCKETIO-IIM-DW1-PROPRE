@@ -13,7 +13,9 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "studio": "turbo run studio --parallel",
-    "migrate": "turbo run migrate"
+    "migrate": "turbo run migrate",
+    "deploy:api": "turbo run deploy --scope=api",
+    "deploy:web": "turbo run deploy --scope=web"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
