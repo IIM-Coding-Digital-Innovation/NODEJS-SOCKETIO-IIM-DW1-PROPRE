@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
-  title: {
-    type: String,
+  data: {
+    type: Object,
     required: true,
   },
 });
@@ -11,10 +11,10 @@ const props = defineProps({
   <div class="card w-full h-48 bg-secondary-content shadow-xl">
     <div class="card-body">
       <h2 class="card-title text-sm">
-        {{ props.title }}
+        {{ props.data.title }}
       </h2>
       <p class="text-xs">
-        If a dog chews shoes whose shoes does he choose?
+        {{ props.data.content }}
       </p>
       <div class="card-actions justify-end">
         <button class="btn btn-primary">
