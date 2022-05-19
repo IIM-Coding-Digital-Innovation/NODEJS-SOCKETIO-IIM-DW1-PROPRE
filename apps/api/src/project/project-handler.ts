@@ -1,6 +1,6 @@
 import type { Request, Response } from '@tinyhttp/app';
 import { PrismaClient } from '@prisma/client';
-import { validationResult } from 'express-validator';
+import { sendError, validateBody } from '../utils/errors';
 
 const getHandler = (prisma: PrismaClient) => {
   const getProjects = async (req: Request, res: Response) => {
@@ -25,11 +25,7 @@ const getHandler = (prisma: PrismaClient) => {
   };
 
   const createProject = async (req: Request, res: Response) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      res.status(400).json({ errors: errors.array() });
-      return;
-    }
+    if (validateBody(req, res)) return;
 
     try {
       const newProject = await prisma.project.create({
@@ -39,22 +35,16 @@ const getHandler = (prisma: PrismaClient) => {
       });
       res.json(newProject);
     } catch (err) {
-      res.status(400).json({
-        errors: [
-          {
-            msg: 'Cannot create project',
-          },
-        ],
-      });
+      sendError(res, 400, [
+        {
+          msg: 'Could not create project',
+        },
+      ]);
     }
   };
 
   const updateProject = async (req: Request, res: Response) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      res.status(400).json({ errors: errors.array() });
-      return;
-    }
+    if (validateBody(req, res)) return;
 
     try {
       const updatedProject = await prisma.project.update({
@@ -67,13 +57,11 @@ const getHandler = (prisma: PrismaClient) => {
       });
       res.json(updatedProject);
     } catch (err) {
-      res.status(400).json({
-        errors: [
-          {
-            msg: 'Could not patch project',
-          },
-        ],
-      });
+      sendError(res, 400, [
+        {
+          msg: 'Could not update project',
+        },
+      ]);
     }
   };
 
@@ -85,13 +73,11 @@ const getHandler = (prisma: PrismaClient) => {
         },
       }));
     } catch (err) {
-      res.status(400).json({
-        errors: [
-          {
-            msg: 'Could not delete project',
-          },
-        ],
-      });
+      sendError(res, 400, [
+        {
+          msg: 'Could not delete project',
+        },
+      ]);
     }
   };
 

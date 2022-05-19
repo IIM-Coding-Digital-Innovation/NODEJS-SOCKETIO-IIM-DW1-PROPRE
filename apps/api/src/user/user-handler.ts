@@ -1,7 +1,7 @@
 import type { Request, Response } from '@tinyhttp/app';
 import { PrismaClient } from '@prisma/client';
-import { validationResult } from 'express-validator';
 import { hash } from 'argon2';
+import { sendError, validateBody } from '../utils/errors';
 
 const getHandler = (prisma: PrismaClient) => {
   const getUsers = async (req: Request, res: Response) => {
@@ -23,43 +23,8 @@ const getHandler = (prisma: PrismaClient) => {
     }));
   };
 
-  const createUser = async (req: Request, res: Response) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      res.status(400).json({ errors: errors.array() });
-      return;
-    }
-
-    type userData = { email: string, name: string, password: string }
-    const { email, name, password }: userData = req.body;
-
-    try {
-      const newUser = await prisma.user.create({
-        data: {
-          email,
-          name,
-          password: await hash(password),
-        },
-      });
-      res.json(newUser);
-    } catch (err) {
-      res.status(400).json({
-        errors: [
-          {
-            value: email,
-            msg: 'Email already in use',
-          },
-        ],
-      });
-    }
-  };
-
   const updateUser = async (req: Request, res: Response) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      res.status(400).json({ errors: errors.array() });
-      return;
-    }
+    if (validateBody(req, res)) return;
 
     type userData = { email: string, name: string, password: string }
     const { email, name, password }: userData = req.body;
@@ -77,13 +42,11 @@ const getHandler = (prisma: PrismaClient) => {
       });
       res.json(newUser);
     } catch (err) {
-      res.status(400).json({
-        errors: [
-          {
-            msg: 'Could not patch user',
-          },
-        ],
-      });
+      sendError(res, 400, [
+        {
+          msg: 'Could not update user',
+        },
+      ]);
     }
   };
 
@@ -95,20 +58,17 @@ const getHandler = (prisma: PrismaClient) => {
         },
       }));
     } catch (err) {
-      res.status(400).json({
-        errors: [
-          {
-            msg: 'Could not delete user',
-          },
-        ],
-      });
+      sendError(res, 400, [
+        {
+          msg: 'Could not delete user',
+        },
+      ]);
     }
   };
 
   return {
     getUsers,
     getUser,
-    createUser,
     updateUser,
     deleteUser,
   };
