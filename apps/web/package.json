@@ -2,11 +2,13 @@
   "name": "web",
   "private": true,
   "scripts": {
+    "start": "node .output/server/index.mjs",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "lint": "eslint . --cache --fix --ext .vue,.js,.ts"
+    "lint": "eslint . --cache --fix --ext .vue,.js,.ts",
+    "deploy": "npm run start"
   },
   "devDependencies": {
     "@nuxt/postcss8": "^1.1.3",

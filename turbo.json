@@ -20,6 +20,10 @@
     },
     "migrate": {
       "outputs": ["prisma/migrations/**"]
+    },
+    "deploy": {
+      "dependsOn": ["migrate"],
+      "outputs": []
     }
   }
 }
