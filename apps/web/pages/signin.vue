@@ -28,9 +28,6 @@
       <NuxtLink class="btn btn-primary w-full normal-case mt-4">
         Sign in
       </NuxtLink>
-      <NuxtLink class="btn btn-primary w-full normal-case mt-4">
-        Sign up
-      </NuxtLink>
     </div>
   </div>
 </template>
