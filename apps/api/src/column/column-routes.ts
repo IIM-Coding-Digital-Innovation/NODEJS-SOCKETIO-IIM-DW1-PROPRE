@@ -1,10 +1,10 @@
 import type { App } from '@tinyhttp/app';
 import type { PrismaClient } from '@prisma/client';
 import { body } from 'express-validator';
+import type { Server } from 'socket.io';
 import { getHandler } from './column-handler';
-// import { requireAuth } from '../util/middleware.js';
 
-const projectRoutes = (app: App, prisma: PrismaClient) => {
+const projectRoutes = (app: App, io: Server, prisma: PrismaClient) => {
   const handler = getHandler(prisma);
 
   app.get('/projects', handler.getColumns);
