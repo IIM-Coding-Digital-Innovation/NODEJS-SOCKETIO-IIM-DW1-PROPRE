@@ -1,10 +1,11 @@
 import type { App } from '@tinyhttp/app';
 import type { PrismaClient } from '@prisma/client';
 import { body } from 'express-validator';
+import { Server } from 'socket.io';
 import { getHandler } from './user-handler';
 import { requireAuth } from '../utils/middlewares/auth';
 
-const userRoutes = (app: App, prisma: PrismaClient) => {
+const userRoutes = (app: App, io: Server, prisma: PrismaClient) => {
   const handler = getHandler(prisma);
 
   app.get('/users', requireAuth, handler.getUsers);
