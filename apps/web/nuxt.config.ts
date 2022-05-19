@@ -18,6 +18,12 @@ export default defineNuxtConfig({
       },
     },
   },
+  modules: [
+    '@nuxtjs-alt/proxy',
+  ],
+  proxy: {
+    '/api': process.env.API_BASE_URL,
+  },
   css: [
     '~/assets/css/tailwind.css',
     '~/assets/css/global.css',

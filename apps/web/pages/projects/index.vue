@@ -1,9 +1,9 @@
 <script setup>
 
-const { data: projects } = await useAsyncData('projects', () => $fetch('http://localhost:3001/projects'));
+const { data: projects } = await useAsyncData('projects', () => $fetch('/api/projects'));
 
 const createProject = async () => {
-  await useFetch('http://localhost:3001/projects', {
+  await useFetch('/api/projects', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: { name: 'First project' },
